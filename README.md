@@ -56,10 +56,15 @@ time; an unmatched jump is an error, never a runtime stack overflow.
 ## Build
 
 ```bash
-cc -std=c99 -O2 -Wall -Wextra -o binvm binvm.c
+make            # build ./binvm (CC, CFLAGS are overridable)
+make test       # compile examples + 11 smoke tests, exit 1 on failure
+make install    # install to $(PREFIX)/bin, default /usr/local
+make clean
 ```
 
-Single file, no dependencies beyond libc.
+Or without make: `cc -std=c99 -O2 -Wall -Wextra -Wpedantic -o binvm binvm.c`.
+Single file, no dependencies beyond libc. CI runs both gcc and clang
+(`.github/workflows/ci.yml`).
 
 ## Usage
 
